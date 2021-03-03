@@ -1,20 +1,28 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org/">
-<head th:fragment="head">
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
     <meta charset="UTF-8"/>
-    <title>Coding Events</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <title></title>
+
 </head>
 <body>
 
-<nav th:fragment="header">
-    <h1 th:text="${title}">Coding Events</h1>
-    <ul class="nav">
-        <li class="nav-item"><a class="nav-link "href="/events">All Events</a></li>
-        <li class="nav-item"><a class="nav-link" href="/events/create">Create Event</a></li>
-    </ul>
-</nav>
+<th:block th:fragment="hourOfCodeAddress">
+    <td>123 Main St.</td>
+    <td><img th:src="@{/images/HourOfCodeLogo.png}"></td>
+</th:block>
+
+<th:block th:fragment="strangeLoopAddress">
+    <td>4098 5th St.</td>
+    <td><img th:src="@{/images/StrangeLoopLogo.jpg}"></td>
+</th:block>
+
+<th:block th:fragment="cesAddress">
+    <td>1 Major St.</td>
+    <td><img th:src="@{/images/CES_LOGO.png}"></td>
+</th:block>
+
+
 
 </body>
-</html>ß
+</html>

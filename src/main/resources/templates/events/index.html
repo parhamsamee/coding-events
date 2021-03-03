@@ -1,24 +1,37 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head th:replace="fragments :: head"></head>
-<body class="container">
+<head>
+    <title>Coding Events</title>
+    <link th:href="@{styles.css}" rel="stylesheet"/>
+</head>
+<body>
 
 <h1>All Events</h1>
 
-<header th:replace="fragments :: header"></header>
 
-<p th:unless="${events} and ${events.size()}">No events!</p>
-
-<table class="table table-striped">
-    <thead>
+<table class="center">
     <tr>
-        <th>Name</th>
+        <th>Event Name</th>
+        <th>Description</th>
+        <th>Address</th>
+        <th>Picture</th>
     </tr>
-    </thead>
-    <tr th:block th:each="event : ${events}">
-        <td th:text="${event}"></td>
-    </tr>
-</table>
+    <th:block th:each="event : ${events}">
+        <tr>
+            <td th:text="${event.key}"></td>
+            <td th:text="${event.value}"></td>
+            <th:block th:if='${event.key.equals("CES")}'>
+                <th:block th:replace="fragments :: cesAddress"></th:block>
+            </th:block>
+            <th:block th:if='${event.key.equals("Hour of Code")}'>
+                <th:block th:replace="fragments :: hourOfCodeAddress"></th:block>
+            </th:block>
+            <th:block th:if='${event.key.equals("Strange Loop")}'>
+                <th:block th:replace="fragments :: strangeLoopAddress"></th:block>
+            </th:block>
+        </tr>
 
+    </th:block>
+</table>
 </body>
 </html>
