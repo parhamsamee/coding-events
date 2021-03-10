@@ -16,12 +16,14 @@
         <th>Name</th>
         <th>Description</th>
         <th>Contact Email</th>
+        <th>Location</th>
     </tr>
     </thead>
     <tr th:block th:each="event : ${events}">
         <td th:text="${event.id}"></td>
         <td th:text="${event.name}"></td>
         <td th:text="${event.contactEmail}"></td>
+        <td th:text="${event.location}"></td>
     </tr>
 </table>
 
