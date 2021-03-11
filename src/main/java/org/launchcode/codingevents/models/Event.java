@@ -1,10 +1,7 @@
 package org.launchcode.codingevents.models;
 
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.util.Objects;
 
 public class Event {
@@ -27,18 +24,38 @@ public class Event {
     @NotBlank(message = "Location is required")
     private String location;
 
+    @AssertTrue(message = "This event must have attendees register. ")
+    private boolean shouldRegister = true;
+
+    @NotNull(message = "At least one attendee is required. ")
+    @Min(value= 1, message = "At least one attendee is required. ")
+    private Integer numOfAttendees;
+
+    @NotNull(message = "Must have # of food courses between 1 and 3 ")
+    @Min(value = 1, message = "Must have # of food courses between 1 and 3 ")
+    @Max(value = 3, message = "Must have # of food courses between 1 and 3 ")
+    private Integer numOfFoodCourses;
 
     //Constructors
-    public Event(String name, String description, String contactEmail, String location) {
+    public Event(String name,
+                 String description,
+                 String contactEmail,
+                 String location,
+                 Integer numOfAttendees) {
+        this();
         this.name = name;
         this.description = description;
         this.contactEmail = contactEmail;
         this.location = location;
+        this.numOfAttendees = numOfAttendees;
+    }
+
+    public Event() {
         this.id = nextId;
         nextId++;
     }
 
-    public Event() {}
+
     //Methods
     //Getters && Setters
 
@@ -57,6 +74,18 @@ public class Event {
     public String getLocation() { return location; }
 
     public void setLocation(String location) { this.location = location; }
+
+    public boolean isShouldRegister() { return shouldRegister; }
+
+    public void setShouldRegister(boolean shouldRegister) { this.shouldRegister = shouldRegister; }
+
+    public Integer getNumOfAttendees() { return numOfAttendees; }
+
+    public void setNumOfAttendees(Integer numOfAttendees) { this.numOfAttendees = numOfAttendees; }
+
+    public Integer getNumOfFoodCourses() { return numOfFoodCourses; }
+
+    public void setNumOfFoodCourses(Integer numOfFoodCourses) { this.numOfFoodCourses = numOfFoodCourses; }
 
     public int getId() { return id; }
 

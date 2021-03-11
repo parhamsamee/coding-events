@@ -17,6 +17,9 @@
         <th>Description</th>
         <th>Contact Email</th>
         <th>Location</th>
+        <th>Should Register</th>
+        <th># Of Attendees</th>
+        <th># Of Food Courses</th>
     </tr>
     </thead>
     <tr th:block th:each="event : ${events}">
@@ -24,6 +27,9 @@
         <td th:text="${event.name}"></td>
         <td th:text="${event.contactEmail}"></td>
         <td th:text="${event.location}"></td>
+        <td th:text="${event.shouldRegister}"></td>
+        <td th:text="${event.numOfAttendees}"></td>
+        <td th:text="${event.numOfFoodCourses}"></td>
     </tr>
 </table>
 
