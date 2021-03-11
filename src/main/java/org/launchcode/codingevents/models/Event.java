@@ -21,11 +21,15 @@ public class Event {
     @NotBlank(message = "Email is required. ")
     @Email(message = "Invalid email. Try again. ")
     private String contactEmail;
+
+    private EventType type;
+
     //Constructors
-    public Event(String name, String description, String contactEmail) {
+    public Event(String name, String description, String contactEmail, EventType type) {
         this.name = name;
         this.description = description;
         this.contactEmail = contactEmail;
+        this.type = type;
         this.id = nextId;
         nextId++;
     }
@@ -45,6 +49,10 @@ public class Event {
     public String getContactEmail() { return contactEmail; }
 
     public void setContactEmail(String contactEmail) { this.contactEmail = contactEmail; }
+
+    public EventType getType() { return type; }
+
+    public void setType(EventType type) { this.type = type; }
 
     public int getId() { return id; }
 
